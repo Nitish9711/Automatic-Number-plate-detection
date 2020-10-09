@@ -19,11 +19,11 @@ This program detects and extract the Vehicle Number using TESSERACT OCR ENGINE. 
     ![Grey scale](/gray.png)
     <br>
 3. Contour mapping. 
-    ![Grey scale](/contour_mapping.png)
+    ![Contour mapping](/contour_mapping.png)
     <br>
 
 3. Conversion to black and white image according to threshold value.
-    ![Grey scale](/black_white.png)
+    ![black and white](/black_white.png)
     <br> 
 
 4. Inverting image and final output
