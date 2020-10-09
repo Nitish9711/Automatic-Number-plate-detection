@@ -11,7 +11,7 @@ import imutils
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 if len(sys.argv) != 2:
-    print ("Please exwcute as : python %s input_file_name \n" % (sys.argv[0])) # ye dekh ye error aa rha h
+    print ("Please exwcute as : python %s input_file_name \n" % (sys.argv[0])) 
     sys.exit()
 else:
     name = sys.argv[1]
@@ -81,7 +81,7 @@ Hhigh = 1 - Hlow
 HlowShift = scipy.fftpack.ifftshift(Hlow.copy())
 HhighShift = scipy.fftpack.ifftshift(Hhigh.copy())
 If = scipy.fftpack.fft2(imgLog.copy(), (M,N))
-cv2.imwrite('output1.png', img)
+cv2.imwrite('gray.png', img)
 Ioutlow = np.real(scipy.fftpack.ifft2(If.copy() * HlowShift, (M,N)))
 Iouthigh = np.real(scipy.fftpack.ifft2(If.copy() * HhighShift, (M,N)))
 gamma1 = 0.3
@@ -91,12 +91,12 @@ Ihmf = np.expm1(Iout)
 Ihmf = (Ihmf - np.min(Ihmf)) / (np.max(Ihmf) - np.min(Ihmf))
 cv2.imwrite('output4.png', Ihmf)
 Ihmf2 = np.array(255*Ihmf, dtype="uint8")
-cv2.imwrite('output5.png', Ihmf2)
+cv2.imwrite('Contour_mapping.png', Ihmf2)
 Ithresh = Ihmf2 < 65
 Ithresh = 255*Ithresh.astype("uint8")
-cv2.imwrite('output3.png', Ithresh)
+cv2.imwrite('black_white.png', Ithresh)
 Iclear = imclearborder(Ithresh, 5)
-cv2.imwrite('output2.png', Iclear)
+cv2.imwrite('Increased_black.png', Iclear)
 Iopen = bwareaopen(Iclear, 10)
 
 cv2.imwrite('output.png', Iopen)
@@ -130,6 +130,6 @@ while True:
 # os.remove('output1.png')
 # os.remove('output2.png')
 # os.remove('output3.png')
-# os.remove('output4.png')
+os.remove('output4.png')
 # os.remove('output5.png')
 
